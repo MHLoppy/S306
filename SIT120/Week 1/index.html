@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SIT120: Vue (Week 1)</title>
+    <script src="https://unpkg.com/vue@2"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }}
+
+      <br />
+      <span v-bind:title="message">
+        Hover your mouse over me for a few seconds to see my dynamically bound
+        title!
+      </span>
+
+      <br />
+      <ol>
+        <li v-for="todo in todos">
+          {{ todo.text }}
+        </li>
+      </ol>
+
+      <input v-model="app6data" />
+      <button v-on:click="addTodo">Add entry</button>
+
+      <p>
+        This produces a console warning but functionally works - I haven't
+        learnt why the warning happens yet.
+      </p>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          message: "Hello Vue ( v i e w )!",
+          message2: "You loaded this page on " + new Date().toLocaleString(),
+          todos: [
+            { text: "Learn JavaScript" },
+            { text: "Learn Vue" },
+            { text: "Build something awesome" }
+          ]
+        },
+
+        methods: {
+          addTodo() {
+            let newTodo = {
+              text: this.app6data
+            };
+            this.todos.push(newTodo);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
