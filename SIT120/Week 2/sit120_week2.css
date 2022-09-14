@@ -29,3 +29,45 @@
         content: "This device reports a limited accuracy primary pointing device, such as a touchscreen (tested for pointer, not any-pointer)."
     }
 }
+
+@media (min-width: 320px) {
+    .width_test .deadbeats {
+        /* currently nothing */
+    }
+
+    .width_test .glowsticks {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 520px) {
+    .width_test .deadbeats {
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+
+    .width_test .glowsticks {
+        max-width:500px;
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+@media (min-width: 720px) {
+    .width_test .deadbeats {
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 700px;
+    }
+
+    /* maximum widths regardless of screen width */
+    .width_test .glowsticks {
+        width: 550px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .width_test .deadbeats .lyrics {
+        width: 700px
+    }
+}
