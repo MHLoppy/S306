@@ -8,95 +8,59 @@
     <script src="https://unpkg.com/vue@2"></script>
 </head>
 <body>
-    <div id="app" class="mainCol">
-        <center>
-            <span v-bind:title="artist">
-                {{ track }}
-            </span>
-        </center>
+    <div id="app">
 
-        <br />
-        <ul>
-            <li v-for="line in lyrics">
-                {{ line.text }}
-            </li>
-        </ul>
+        <!-- from Vue example code -->
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>Checked names: {{ checkedNames }}</span>
 
-        <center>
-            <div class="glowsticks">
-                <img :src="leftPath" alt="A coloured glowstick">
-                <button v-on:click="addLyric(); changeGlow();" :disabled="isDisabled">Load next line</button>
-                <img :src="rightPath" alt="A coloured glowstick">
-            </div>
+        <!-- how does the above span usage actually differ from non-span usage here though? -->
+        <div>
+            Checked names: {{ checkedNames}}
+        </div>
 
-            <p v-if="showAudio">All lyrics loaded!</p>
-            <p v-else="showAudio">Load all lyrics to show song.</p>
+        <div>
+            <button-counter testprop="this is a test"></button-counter>
+            <local-component testprop="this is a test"></local-component>
+        </div>
 
-            <div v-show="showAudio">
-                <audio controls src="Calliope Mori - end of a life (BXB26PzV31k).webm" type="audio/ogg" />
-            </div>
-        </center>
     </div>
 
     <script>
-        var app = new Vue({
-            el: "#app",
-            data: {
-                track: "end of a life",
-                artist: "by Calliope Mori",
-                lyricIndex: 0,
-                finalIndex: 8,
-                lyrics: [],
-                allLyrics: [
-                    { text: "We'd run" },
-                    { text: "Right through" },
-                    { text: "Those nights" },
-                    { text: "I'll never find my way back to you inside this labyrinth of light" },
-                    { text: "There was madness" },
-                    { text: "In the meaning" },
-                    { text: "Never laughless" },
-                    { text: "We were screaming at the top of our lungs to the numbness" },
-                    { text: "This city never died" },
-                ],
-                leftPath: "glow0.png",
-                rightPath: "glow1.png",
-                isDisabled: false,
-                showAudio: false
-            },
-
-            methods: {
-                addLyric() {
-                    let newLine = "";
-                    if (this.lyricIndex >= this.finalIndex)
-                    {
-                        newLine = {
-                            text: "(No more lyrics to load - button disabled, audio enabled)"
-                        };
-                        this.isDisabled = true;
-                        this.showAudio = true;
-                    }
-                    else
-                    {
-                        newLine = {
-                            text: this.allLyrics[this.lyricIndex].text
-                        };
-                    };
-                    this.lyrics.push(newLine);
-                    this.lyricIndex++;
-                },
-                changeGlow() {
-                    // make sure the left glowstick always changes each press
-                    let currentLeft = this.leftPath;
-                    while (currentLeft == this.leftPath)
-                    {
-                        this.leftPath = "glow" + Math.floor(Math.random() * 4) + ".png";
-                    }
-                    // make sure that the two glowsticks are never the same colour
-                    while (this.leftPath == this.rightPath)
-                    {
-                        this.rightPath = "glow" + Math.floor(Math.random() * 4) + ".png";
-                    }
+        // Define a new component called button-counter
+        Vue.component('button-counter', {
+            props: ['testprop'],
+            data: function () {
+                return {
+                    count: 0
                 }
+            },
+            template: '<button v-on:click="count++">You clicked me {{ count }} times {{ testprop }}.</button>'
+        })
+
+        var localComponent = {
+            props: ['testprop'],
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">You clicked me {{ count }} times {{ testprop }}.</button>'
+        }
+
+        const app = new Vue({
+            el: "#app",
+            components: {
+                'local-component': localComponent
+            },
+            data: {
+                checkedNames: []
             }
         });
     </script>
