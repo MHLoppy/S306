@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SIT120: Week 4</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="sit120_week4.css">
+
+    <script src="https://unpkg.com/vue@2"></script>
+    <script src="week4_script.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+
+        <br />
+        <span v-bind:title="message">
+            Hover your mouse over me for a few seconds to see my dynamically bound
+            title!
+        </span>
+
+        <br />
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+
+        <input v-model="app6data" />
+        <button v-on:click="addTodo">Add entry</button>
+
+        <p style="color:darkblue">
+            This produces a console warning but functionally works - I haven't
+            learnt why the warning happens yet.
+        </p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello Vue ( v i e w )!",
+                message2: "You loaded this page on " + new Date().toLocaleString(),
+                todos: [
+                    { text: "Learn JavaScript" },
+                    { text: "Learn Vue" },
+                    { text: "Build something awesome" }
+                ]
+            },
+
+            methods: {
+                addTodo() {
+                    let newTodo = {
+                        text: this.app6data
+                    };
+                    this.todos.push(newTodo);
+                }
+            }
+        });
+    </script>
+
+    <div class="width_test">
+        <div class="deadbeats">
+            <img src="deadbeats.png" alt="Anything for you my son">
+
+            <div class="glowsticks">
+                <img src="glow0.png" alt="A blue glowstick">
+                <img src="glow1.png" alt="A pink glowstick">
+                <img src="glow2.png" alt="A purple glowstick">
+                <img src="glow3.png" alt="A red glowstick">
+            </div>
+
+            <div class="lyrics">
+                <p>
+                    We'd run
+                    <br>Right through
+                    <br>Those nights
+                    <br>I'll never find my way back to you inside this labyrinth of light
+                    <br>There was madness
+                    <br>In the meaning
+                    <br>Never laughless
+                    <br>We were screaming at the top of our lungs to the numbness
+                    <br>This city never died
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
