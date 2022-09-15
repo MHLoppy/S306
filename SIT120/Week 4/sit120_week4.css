@@ -1,73 +1,17 @@
-@media (hover: hover) {
-    .hover_test::before {
-        content: "This device supports hover on its primary input mechanism (tested for hover, not any-hover)."
+@media (min-width: 360px) {
+    .mainCol {
+        width: 80%;
     }
 }
 
-@media (hover: none) {
-    .hover_test::before {
-        content: "This device does not support hover on its primary input mechanism (tested for hover, not any-hover)."
+@media (min-width: 480px) {
+    .mainCol {
+        width: 400px;
     }
 }
 
-@media (pointer: none) {
-    .pointer_test::after {
-        content: "This device reports no primary pointing device (tested for pointer, not any-pointer)."
-    }
-}
-
-/* Note how it would be possible for e.g. a touchscreen laptop to support both a coarse (limited accuracy) and high accuracy pointing device */
-/* See also: before/after https://www.w3schools.com/cssref/sel_before.asp */
-@media (pointer: fine) {
-    .pointer_test::after {
-        content: "This device reports a high accuracy primary pointing device, such as a mouse (tested for pointer, not any-pointer)."
-    }
-}
-
-@media (pointer: coarse) {
-    .pointer_test::before {
-        content: "This device reports a limited accuracy primary pointing device, such as a touchscreen (tested for pointer, not any-pointer)."
-    }
-}
-
-@media (min-width: 320px) {
-    .width_test .deadbeats {
-        /* currently nothing */
-    }
-
-    .width_test .glowsticks {
-        display: flex;
-        justify-content: space-between;
-    }
-}
-
-@media (min-width: 520px) {
-    .width_test .deadbeats {
-        margin-left: 4%;
-        margin-right: 4%;
-    }
-
-    .width_test .glowsticks {
-        max-width:500px;
-        display: flex;
-        justify-content: space-around;
-    }
-}
-
-@media (min-width: 720px) {
-    .width_test .deadbeats {
-        margin-left: 2%;
-        margin-right: 2%;
-        width: 700px;
-    }
-
-    /* maximum widths regardless of screen width */
-    .width_test .glowsticks {
-        width: 550px;
-        display: flex;
-        justify-content: space-evenly;
-    }
-    .width_test .deadbeats .lyrics {
-        width: 700px
+@media (min-width: 560px) {
+    .mainCol {
+        width: 500px;
     }
 }
