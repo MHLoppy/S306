@@ -42,7 +42,12 @@ const next_christmas = new Date(christmas.setFullYear(2023)); // this changes th
 console.log(next_christmas);
 console.log(next_christmas.toUTCString());
 
-console.log(christmas)  // notice how we've actually also changed the underlying variable with the above changes!!
+console.log(christmas)                      // notice how we've actually also changed the underlying variable with the above changes!!
+christmas.setFullYear(2022);
+const christmas_2023 = new Date(christmas); // this method of assignment will avoid changing the underlying variable
+christmas_2023.setFullYear(2023);
+console.log(christmas);
+console.log(christmas_2023);
 
 const christmas_dinner = new Date(christmas.setHours(19));
 console.log(christmas_dinner);
