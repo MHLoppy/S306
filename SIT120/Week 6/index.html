@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SIT120: Week 6</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://unpkg.com/vue@2"></script>
+    <script src="week6_script.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        <!-- from Vue example code -->
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>Checked names: {{ checkedNames }}</span>
+
+        <!-- how does the above span usage actually differ from non-span usage here though? -->
+        <div>
+            Checked names: {{ checkedNames }}
+        </div>
+
+        <div>
+            <button-counter testprop="(this is a test)"></button-counter>
+            <local-component testprop="(this is a test)"></local-component>
+        </div>
+
+        <br/>
+
+        <div>
+            <input v-model.trim="name" placeholder="enter your name">
+            <input v-model.number="age" type="number" placeholder="enter your age">
+            <br />
+            <input type="checkbox" v-model="checked" v-on:change="checkIfCaptain()">
+            <label for="checkbox"> I am the captain</label>
+
+            <br />Select your class:
+            <select v-model="charClass">
+                <option>Rigger</option>
+                <option>Navigator</option>
+                <option>Specialist</option>
+            </select>
+
+            Select your trait:
+            <select v-model="chosenTraits">
+                <option v-for="trait in traits" v-bind:value="trait.value">
+                    {{ trait.text }}
+                </option>
+            </select>
+
+            <br />
+            <p>
+                Hello, {{ captain }}{{ name }} (age {{ age }}).
+                <br />
+                You are a {{ charClass }} with the following trait: {{ chosenTraits }}.
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // Define a new component called button-counter
+        Vue.component('button-counter', {
+            props: ['testprop'],
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">You clicked me {{ count }} times {{ testprop }}.</button>'
+        })
+
+        var localComponent = {
+            props: ['testprop'],
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">You clicked me {{ count }} times {{ testprop }}.</button>'
+        }
+
+        const app = new Vue({
+            el: "#app",
+            components: {
+                'local-component': localComponent
+            },
+            data: {
+                checkedNames: [],
+                name: "",
+                age: null,
+                checked: false,
+                captain: "",
+                charClass: "",
+                chosenTraits: "",
+                traits: [
+                    { text: "Careful Aim: 20% more accurate on all shots, but shots suffer -1 initiative penalty", value: "Careful Aim" },
+                    { text: "Skim Reader: gain experience 10% more quickly, but maximum skill cap -1 for all skills", value: "Skim Reader" },
+                    { text: "Honest: Relationships improve 25% faster, but unable to tell minor lies", value: "Honest" }
+                ],
+                selected: 'A',
+                options: [
+                    { text: 'One', value: 'A' },
+                    { text: 'Two', value: 'B' },
+                    { text: 'Three', value: 'C' }
+                ]
+            },
+            methods: {
+                checkIfCaptain() {
+                    if (this.checked == true) {
+                        this.captain = "Captain ";
+                    }
+                    else {
+                        this.captain = "";
+                    };
+                }
+            }
+        });
+    </script>
+</body>
+</html>
