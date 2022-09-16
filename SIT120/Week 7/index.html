@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SIT120: Week 7</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://unpkg.com/vue@2"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <button-counter propscope="Global"></button-counter>
+            <local-component propscope="Local"></local-component>
+        </div>
+
+        <div>
+            <animalcounter animal-type="Badgers" prop-scope="Local"></animalcounter>
+        </div>
+
+        <div>
+            <parentComponent></parentComponent>
+        </div>
+
+        <div>
+            <emitcomponent v-model="testCheck"></emitcomponent>
+            <p v-if="testCheck">The checkbox should be checked right now!</p>
+            <p v-else="testCheck">The checkbox should be unchecked right now!</p>
+        </div>
+
+        <basicslotcomponent>
+            <p>This is inside of a slot</p>
+        </basicslotcomponent>
+
+        <namedslotcomponent>
+            <template v-slot:header>
+                <h2>
+                    Are Your Students Burning Out After Dealing With Circumstances Beyond Their Control?
+                </h2>
+            </template>
+            <template v-slot:main>
+                <p>
+                    Experience shows that working 70 hour weeks back-to-back to catch up after falling ill is bad for both student wellbeing, as well as academic results.
+                </p>
+            </template>
+            <template v-slot:footer>
+                <small>
+                    Published 2022-09-16.
+                </small>
+            </template>
+        </namedslotcomponent>
+    </div>
+
+    <script>
+        // Define a new component called button-counter
+        Vue.component('button-counter', {
+            props: ['propscope'],
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">{{ propscope }}: You clicked me {{ count }} times.</button>'
+        })
+
+        // notice how for the global definition of components we need the extra brackets () surrounding the component, but for local declarations we just use = {}
+        Vue.component('child-component', {
+            data: function () {
+                return {
+                    childMessage: "I am the child component"
+                }
+            },
+            template: '<h3>{{ childMessage }}</h3>'
+        })
+
+        let localComponent = {
+            props: ['propscope'],
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">{{ propscope }}: You clicked me {{ count }} times.</button>'
+        }
+
+        // notice how we use camelCase for the prop names here and in the template, but then hyphenate (kebab-case) in the HTML implementation
+        let localComponent2 = {
+            props: {
+                animalType: String,
+                propScope: String
+            },
+            data: function () {
+                return {
+                    animalCount: 0
+                }
+            },
+            template: '<button v-on:click="animalCount++">{{ propScope }}: There are now {{ animalCount }} {{ animalType }}.</button>'
+        }
+
+        let emitComponent = {
+            model: {
+                prop: 'checked',
+                event: 'change'
+            },
+            props: {
+                checked: Boolean
+            },
+            template: `<input type="checkbox" v-bind:checked="checked" v-on:change="$emit('change', $event.target.checked)">`   //NOTE: there are THREE types of quotes in use here
+        }
+
+        let parentComponent = {
+            data: function () {
+                return {
+                    parentMessage: "I am the parent component"
+                }
+            },
+            template: '<div><h1>{{ parentMessage }}</h1><child-component></child-component></div>'
+        }
+
+        let basicSlotComponent = {
+            template:`<div style="background-color: #8080B0"><slot></slot></div>`
+        }
+
+        let namedSlotComponent = {
+            template: `<div><header><slot name="header"></slot></header><main><slot name="main"></slot></main><footer><slot name="footer"></slot></footer></div>`//optionally we could un-name main
+        }
+
+        const app = new Vue({
+            el: "#app",
+            components: {
+                'local-component': localComponent,   // note how this component has been registered with hyphenation: when you do this you have to use quotes
+                animalcounter: localComponent2,
+                parentcomponent: parentComponent,
+                emitcomponent: emitComponent,
+                basicslotcomponent: basicSlotComponent,
+                namedslotcomponent: namedSlotComponent
+            },
+            data: {
+                checkedNames: [],
+                testCheck: false
+            }
+        });
+    </script>
+</body>
+</html>
