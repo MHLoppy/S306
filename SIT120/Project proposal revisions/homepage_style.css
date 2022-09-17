@@ -1,0 +1,12 @@
+body, html {
+    height: 100%;
+}
+
+.splashContainer {
+    text-align: center;
+    height: 100%;
+    background-image: url(https://static.wikia.nocookie.net/steamtradingcards/images/8/8b/Rise_of_Nations_Extended_Edition_Background_Romans.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

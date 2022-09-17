@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SIT120: Project Proposal Revisions</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="homepage_style.css">
+
+    <script src="https://unpkg.com/vue@2"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="splashContainer">
+            <h1 style="color:whitesmoke">RoN:EE is broken.</h1>
+            <h1 style="color:whitesmoke">Let's fix it.</h1>
+        </div>
+
+        <placeholder-component>
+            <p>This is just a placeholder for homepage component which hasn't yet been implemented.</p>
+        </placeholder-component>
+        <placeholder-component>
+            <p>This is just a placeholder for homepage component which hasn't yet been implemented.</p>
+        </placeholder-component>
+        <placeholder-component>
+            <p>This is just a placeholder for homepage component which hasn't yet been implemented.</p>
+        </placeholder-component>
+        <placeholder-component>
+            <p>This is just a placeholder for homepage component which hasn't yet been implemented.</p>
+        </placeholder-component>
+        <placeholder-component>
+            <p>This is just a placeholder for homepage component which hasn't yet been implemented.</p>
+        </placeholder-component>
+    </div>
+
+    <script>
+        let placeholderComponent = {
+            template: `<div></div>`
+        }
+
+        const app = new Vue({
+            el: "#app",
+            components: {
+                placeholderComponent: placeholderComponent
+            },
+            data: {
+
+            }
+        });
+    </script>
+</body>
+</html>
