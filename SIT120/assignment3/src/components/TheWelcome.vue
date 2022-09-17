@@ -41,8 +41,6 @@ import SupportIcon from "./icons/IconSupport.vue";
 
       <br />
 
-      This is the main text area.
-
       More instructions are available in <code>README.md</code>.
     </WelcomeItem>
 
@@ -98,5 +96,7 @@ import SupportIcon from "./icons/IconSupport.vue";
       <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a
       >.
     </WelcomeItem>
+
+    This is the main text area...
   </div>
 </template>
