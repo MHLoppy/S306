@@ -1,0 +1,58 @@
+@import "./base.css";
+
+#app {
+  min-height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0rem, 1rem, 0, 1rem;
+
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--color-heading);
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  color: var(--color-heading);
+}
+
+body {
+  place-items: center;
+}
+
+a,
+.accent {
+  text-decoration: underline;
+  color: #E5D58E;
+  transition: 0.4s;
+  /* font-weight: 600; */
+}
+
+strong {
+  font-weight: 600;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: rgba(229, 213, 142, 0.17); /* this is the sandy color in use elsewhere, but with transparency added */
+  }
+}
+
+/*@media (min-width: 1024px) {
+  body {
+    display: flex;
+  }
+
+  #app {
+     display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 0.5rem; 
+  }
+}*/

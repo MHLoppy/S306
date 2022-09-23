@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import WelcomeItem from "./WelcomeItem.vue";
+import WelcomeItem       from "./HomepageItem.vue";
 import DocumentationIcon from "./icons/IconDocumentation.vue";
-import ToolingIcon from "./icons/IconTooling.vue";
-import EcosystemIcon from "./icons/IconEcosystem.vue";
-import CommunityIcon from "./icons/IconCommunity.vue";
-import SupportIcon from "./icons/IconSupport.vue";
+import ToolingIcon       from "./icons/IconTooling.vue";
+import EcosystemIcon     from "./icons/IconEcosystem.vue";
+import CommunityIcon     from "./icons/IconCommunity.vue";
+import SupportIcon       from "./icons/IconSupport.vue";
 </script>
 
 <template>
@@ -13,11 +13,14 @@ import SupportIcon from "./icons/IconSupport.vue";
       <template #icon>
         <DocumentationIcon />
       </template>
-      <template #heading>Documentation</template>
-
-      Vue’s
-      <a target="_blank" href="https://v2.vuejs.org/">official documentation</a>
-      provides you with all information you need to get started.
+      <template #heading>Correct Damage Modifiers</template>
+      In RoN:EE, every unit and building in the game is affected by a
+      <a target="_blank" href="/object-masks-damage-bug">major damage bug</a>.
+      This means that EE's balance is <strong>not</strong> what the original developers intended. 
+      Unfortunately this bug was never fixed in EE's official patches, so CBP includes a workaround 
+      for this bug instead.
+      <br/><br/>
+      This is the foundation upon which all of the other changes are built on top of.
     </WelcomeItem>
 
     <WelcomeItem>
@@ -98,5 +101,6 @@ import SupportIcon from "./icons/IconSupport.vue";
     </WelcomeItem>
 
     This is the main text area...
+    Footers and stuff will be down here somewhere asdf
   </div>
 </template>

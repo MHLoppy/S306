@@ -1,12 +1,15 @@
 <template>
   <div class="item">
-    <i>
-      <slot name="icon"></slot>
-    </i>
+    <sideMedia>
+      <slot name="media"></slot>
+    </sideMedia>
     <div class="details">
       <h3>
         <slot name="heading"></slot>
       </h3>
+      <!-- <strong>
+        <slot name="intro"></slot>
+      </strong> -->
       <slot></slot>
     </div>
   </div>
@@ -23,14 +26,12 @@
   margin-left: 1rem;
 }
 
-i {
+.sideMedia {
   display: flex;
   place-items: center;
   place-content: center;
-  width: 32px;
-  height: 32px;
-
-  color: var(--color-text);
+  width: 128px;
+  height: 128px;
 }
 
 h3 {
@@ -40,13 +41,18 @@ h3 {
   color: var(--color-heading);
 }
 
+/* strong {
+  font-weight: 700;
+  color: var(--color-text);
+} */
+
 @media (min-width: 1024px) {
   .item {
     margin-top: 0;
     padding: 0.4rem 0 1rem calc(var(--section-gap) / 2);
   }
 
-  i {
+  .sideMedia {
     top: calc(50% - 25px);
     left: -26px;
     position: absolute;
