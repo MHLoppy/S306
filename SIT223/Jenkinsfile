@@ -1,0 +1,58 @@
+pipeline{
+    agent any
+    environment{
+        BUILD_TOOL="NAnt2"
+        TEST_TOOL="NUnit"
+        ANALYSIS_TOOL="SonarAnalyzer"
+        SECURITY_TOOL="SonarQube"
+        SERVER="Azure"
+    }
+    
+    stages{
+        stage('Stage 1: Build'){
+            steps{
+                echo "Use $BUILD_TOOL for build process."
+            }
+        }
+        stage('Stage 2: Unit/Integration Tests'){
+            steps{
+                echo "Use $TEST_TOOL for unit/integration tests."
+                emailext(
+                    to: "mh222372873@gmail.com",
+                    subject: "$env.JOB_BASE_NAME (Build $BUILD_NUMBER): Unit/Integration Tests $currentBuild.currentResult",
+                    body: "A log is attached.",
+                    attachLog: true)
+            }
+        }
+        stage('Stage 3: Code Analysis'){
+            steps{
+                echo "Use $ANALYSIS_TOOL for code analysis."
+            }
+        }
+        stage('Stage 4: Security Scan'){
+            steps{
+                echo "Use $SECURITY_TOOL for security scan."
+                emailext(
+                    to: "mh222372873@gmail.com",
+                    subject: "$env.JOB_BASE_NAME (Build $BUILD_NUMBER): Security Scan $currentBuild.currentResult",
+                    body: "A log is attached.",
+                    attachLog: true)
+            }
+        }
+        stage('Stage 5: Deploy to Staging'){
+            steps{
+                echo "Deploy to staging environment on $SERVER"
+            }
+        }
+        stage('Stage 6: Integration Tests on Staging'){
+            steps{
+                echo "Use $TEST_TOOL to run integration tests in staging environment."
+            }
+        }
+        stage('Stage 7: Deploy to Production'){
+            steps{
+                echo "Deploy to production environment on $SERVER"
+            }
+        }
+    }
+}
