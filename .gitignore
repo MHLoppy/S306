@@ -1,6 +1,18 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
+﻿
 /.vs/S306/v17
 /.vs
+/SIT305/Task 2.1/UnitConverterApp/*.iml
+/SIT305/Task 2.1/UnitConverterApp/.gradle
+/SIT305/Task 2.1/UnitConverterApp/local.properties
+/SIT305/Task 2.1/UnitConverterApp/.idea/caches
+/SIT305/Task 2.1/UnitConverterApp/.idea/libraries
+/SIT305/Task 2.1/UnitConverterApp/.idea/modules.xml
+/SIT305/Task 2.1/UnitConverterApp/.idea/workspace.xml
+/SIT305/Task 2.1/UnitConverterApp/.idea/navEditor.xml
+/SIT305/Task 2.1/UnitConverterApp/.idea/assetWizardSettings.xml
+/SIT305/Task 2.1/UnitConverterApp/.DS_Store
+/SIT305/Task 2.1/UnitConverterApp/build
+/SIT305/Task 2.1/UnitConverterApp/captures
+/SIT305/Task 2.1/UnitConverterApp/.externalNativeBuild
+/SIT305/Task 2.1/UnitConverterApp/.cxx
+/SIT305/Task 2.1/UnitConverterApp/local.properties
