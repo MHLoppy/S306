@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/filter_def"
+        android:title="Reset sort order"
+        android:icon="@drawable/icon_desc"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/filter_asc"
+        android:title="Sort by due date (ascending)"
+        android:icon="@drawable/icon_desc"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/filter_desc"
+        android:title="Sort by due date (descending)"
+        android:icon="@drawable/icon_desc"
+        app:showAsAction="never"/>
+</menu>
