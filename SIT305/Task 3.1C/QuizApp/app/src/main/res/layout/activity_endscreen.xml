@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/offwhite"
+    tools:context=".EndscreenActivity">
+
+    <TextView
+        android:id="@+id/congratsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="Congratulations your name!"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scorePrefixTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/scorePrefixTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="YOUR SCORE:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scoreResultTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/scoreResultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X/Y"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/newQuizButton"
+        android:layout_width="250dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/customgrey"
+        android:text="Take New Quiz"
+        android:textColor="@color/offblack"
+        android:textSize="24sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreResultTextView"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/finishButton"
+        android:layout_width="250dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/customgrey"
+        android:text="Finish (close app)"
+        android:textColor="@color/offblack"
+        android:textSize="24sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newQuizButton"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
